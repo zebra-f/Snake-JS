@@ -3,13 +3,33 @@ import { getGridSize } from "./grid.js"
 
 
 // variable used by main.js
-export const SNAKE_SPEED = 12;  // moves SNAKE_SPEED times per seconds 
+export const SNAKE_SPEED = 10;  // moves SNAKE_SPEED times per seconds 
 let newSegments = 0;
 // starting position (middle of the board)
 const startingPosition = Math.floor(getGridSize() / 2) + 1
 const snakeBodyPosition = [
-                        { x: startingPosition, y: startingPosition },
+                        { x: startingPosition, y: startingPosition }
+                        // { x: 11, y: 11 },  update()   { x: 10, y: 11 }, 
+                        // { x: 12, y: 11 },  --->       { x: 11, y: 11 }, 
+                        // { x: 13, y: 11 },             { x: 12, y: 11 }, 
+                        // { x: 14, y: 11 },             { x: 13, y: 11 }, 
+                        // { x: 14, y: 11 },             { x: 14, y: 11 }, 
+                        // { x: 14, y: 11 },             { x: 14, y: 11 }, 
+                        // { x: 14, y: 11 }              { x: 14, y: 11 }  // EXPENSION_RATE = 3
     ];
+
+// function used by main.js
+export const snakeHeadPosition = () => {
+    return snakeBodyPosition[0];
+}
+
+
+// function used by main.js
+export const snakeIntersection = () => {
+    return snakeBodyPosition.slice(1).some(segment => {
+        return equalPosition(segment, snakeHeadPosition());
+    });
+}
 
 
 // function used by main.js

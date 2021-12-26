@@ -1,7 +1,7 @@
 import { expandSnake, onSnake } from "./snake.js";
 import { randomGridPosition } from "./grid.js"
 
-let foodPosition = { x: 4, y: 2 };
+let foodPosition = getRandomFoodPosition();
 const EXPANSION_RATE = 1;  // how many segments will be added to the snake body after eating a food
 
 

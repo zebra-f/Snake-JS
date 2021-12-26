@@ -1,6 +1,7 @@
-import { update as updateSnake, draw as drawSnake, SNAKE_SPEED } from "./snake.js"
+import { update as updateSnake, draw as drawSnake, SNAKE_SPEED,
+     snakeHeadPosition, snakeIntersection } from "./snake.js"
 import { update as updateFood, draw as drawFood } from "./food.js"
-import { getGridSize } from "./grid.js"
+import { getGridSize, outsideGrid } from "./grid.js"
 
 
 let lastRenderTime = 0;
@@ -13,7 +14,7 @@ gameBoard.style.gridTemplateColumns = `repeat(${getGridSize()}, 1fr)`
 
 const main = (currentTime) => {
     if (gameOver) {
-        return alert('you lose');
+        return;
     }
     
     requestAnimationFrame(main);
@@ -26,15 +27,19 @@ const main = (currentTime) => {
     // updates snake/food position
     updateSnake();
     updateFood();
-    
+
+    gameOverCheck();
     // clears board before drawing (removes previously created divs)
     gameBoard.innerHTML = '';
     // draws snake/food
     drawSnake(gameBoard);
     drawFood(gameBoard);
-    
 }
-
+// --->
 requestAnimationFrame(main);
 
+
+function gameOverCheck() {
+    gameOver = outsideGrid(snakeHeadPosition()) || snakeIntersection();
+}
 
