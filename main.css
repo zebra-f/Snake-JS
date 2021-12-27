@@ -8,10 +8,31 @@ body {
     background-color: #1d3557;
 }
 
-#game-board {
-    background-color: #001219;
+
+.container {
+    background-color: #1d3557;
     width: 100vmin;
     height: 100vmin;
+    display: grid;
+    grid-template-rows: 1fr 12fr 1fr;
+    grid-template-columns: 1fr 12fr 1fr;
+    grid-template-areas: 
+        "ui1 ui2 ui3"
+        "ui4 game-board ui6"
+        "ui7 ui8 ui9";
+}
+
+#ui2 {
+    font-size: 2.5vmin;
+    grid-area: ui2;
+    color: blanchedalmond;
+    display: flex
+}
+
+
+#game-board {
+    background-color: #001219;
+    grid-area: game-board;
     display: grid;
     /* grid-template-rows: main.js;
     grid-template-columns: main.js; */
