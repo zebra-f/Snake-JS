@@ -1,8 +1,8 @@
 import { update as updateSnake, draw as drawSnake, SNAKE_SPEED,
-     snakeHeadPosition, snakeIntersection } from "./snake.js";
-import { update as updateFood, draw as drawFood } from "./food.js";
-import { getGridSize, outsideGrid } from "./grid.js";
-import { updateScore } from "./ui.js";
+     snakeHeadPosition, snakeIntersection } from "./components/snake.js";
+import { update as updateFood, draw as drawFood } from "./components/food.js";
+import { getGridSize, outsideGrid } from "./components/grid.js";
+import { updateScore } from "./components/ui.js";
 
 
 let lastRenderTime = 0;

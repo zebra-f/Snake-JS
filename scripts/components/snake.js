@@ -1,7 +1,6 @@
 import { getInputDirection } from "./input.js";
 import { getGridSize } from "./grid.js";
 
-
 // variable used by main.js
 export const SNAKE_SPEED = 10;  // moves SNAKE_SPEED times per seconds 
 let newSegments = 0;
